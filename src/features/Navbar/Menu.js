@@ -50,6 +50,9 @@ const SimpleMenu = ({ tabname }) => {
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
+          <MenuItem onClick={() => handleClose('orderSummary')}>
+            Recent Order Summary View
+          </MenuItem>
           <MenuItem onClick={handleClose}>Profile</MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
           <MenuItem onClick={handleClose}>Logout</MenuItem>

@@ -67,7 +67,7 @@ const OrderSummaryCard = ({ order }) => {
             </Grid>
             <Grid container item xs={12} lg={9} spacing={3} style={{height: "fit-content"}}>
               <Grid container item xs={12} lg={9}>
-                <Grid xs={3} lg={1} className={classes.gridAlign}>
+                <Grid xs={3} lg={2} className={classes.gridAlign}>
                   <SaveAltIcon
                     className={`${
                       order.status === 'ordered'
@@ -86,7 +86,7 @@ const OrderSummaryCard = ({ order }) => {
                   Ordered
                 </Grid>
 
-                <Grid xs={3} lg={1} className={classes.gridAlign}>
+                <Grid xs={3} lg={2} className={classes.gridAlign}>
                   <MotorcycleIcon
                     className={`${
                       order.status === 'shipped'
@@ -104,7 +104,7 @@ const OrderSummaryCard = ({ order }) => {
                   ></div>
                   Shipped
                 </Grid>
-                <Grid xs={3} lg={1} className={classes.gridAlign}>
+                <Grid xs={3} lg={2} className={classes.gridAlign}>
                   <HomeIcon
                     className={`${
                       order.status === 'delivered'
@@ -122,7 +122,7 @@ const OrderSummaryCard = ({ order }) => {
                   ></div>
                   Delivered
                 </Grid>
-                <Grid xs ={3}lg={6}>
+                <Grid xs ={3}lg={3}>
                 
               </Grid>
               <Grid xs={12} lg={12} className={`${classes.gridAlign} `}>

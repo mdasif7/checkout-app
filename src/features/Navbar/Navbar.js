@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const [showOtherMenu, setshowOtherMenu] = useState(false);
-
+  let history = useHistory();
   const onClickShowOther = () => {
     setshowOtherMenu(true);
   };
@@ -33,8 +34,11 @@ export default function ButtonAppBar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const handleClose = (text) => {
     setAnchorEl(null);
+    if (text) {
+      history.push(`/${text}`);
+    }
   };
 
   return (
@@ -57,15 +61,24 @@ export default function ButtonAppBar() {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
+            <MenuItem onClick={() => handleClose('orderSummary')}>
+              Recent Order Summary View
+            </MenuItem>
             <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleClose}>My account</MenuItem>
             <MenuItem onClick={handleClose}>Logout</MenuItem>
           </Menu>
           {showOtherMenu && <SimpleMenu tabname={'Brands'} />}
 
-          <SimpleMenu tabname={'Account'} />
-          <SimpleMenu tabname={'Recently Viewed'} />
-          <SimpleMenu tabname={'Order Status'} />
+          <div className='viewport-class'>
+            <SimpleMenu tabname={'Account'} />
+          </div>
+          <div className='viewport-class'>
+            <SimpleMenu tabname={'Recently Viewed'} />
+          </div>
+          <div className='viewport-class'>
+            <SimpleMenu tabname={'Order Status'} />
+          </div>
         </Toolbar>
       </AppBar>
     </div>
