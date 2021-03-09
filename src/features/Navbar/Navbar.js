@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,39 +46,68 @@ export default function ButtonAppBar() {
     <div className={classes.root}>
       <AppBar position='static'>
         <Toolbar>
-          <IconButton
-            edge='start'
-            className={classes.menuButton}
-            color='inherit'
-            aria-label='menu'
-            onClick={handleClick}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Menu
-            id='simple-menu'
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={() => handleClose('orderSummary')}>
-              Recent Order Summary View
-            </MenuItem>
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-            <MenuItem onClick={handleClose}>Logout</MenuItem>
-          </Menu>
-          {showOtherMenu && <SimpleMenu tabname={'Brands'} />}
+          <div className='bread-viewport-class'>
+            <div>
+              <IconButton
+                edge='start'
+                className={classes.menuButton}
+                color='inherit'
+                aria-label='menu'
+                onClick={handleClick}
+              >
+                <MenuIcon />
+              </IconButton>
 
-          <div className='viewport-class'>
-            <SimpleMenu tabname={'Account'} />
+              <Menu
+                id='simple-menu'
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={() => handleClose('orderSummary')}>
+                  Recent Order Summary View
+                </MenuItem>
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </div>
+            <div>
+              <Typography>Check out App</Typography>
+            </div>
           </div>
-          <div className='viewport-class'>
-            <SimpleMenu tabname={'Recently Viewed'} />
+          {showOtherMenu && <SimpleMenu tabname={'Brands'} />}
+          <div className='navWrapper'> 
+          <div className='right-content'>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Products'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Brands'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Deals'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Services'} />
+            </div>
           </div>
-          <div className='viewport-class'>
-            <SimpleMenu tabname={'Order Status'} />
+          <div className='left-content'>
+            
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Account'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Recently Viewed'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Order Status'} />
+            </div>
+            <div className='viewport-class'>
+              <SimpleMenu tabname={'Saved Items'} />
+            </div>
+          </div>
           </div>
         </Toolbar>
       </AppBar>

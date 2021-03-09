@@ -27,8 +27,13 @@ const SimpleMenu = ({ tabname }) => {
     setAnchorEl(null);
     if (text) {
       history.push(`/${text}`);
+    } else {
+      history.push(`/home`);
     }
   };
+  const handleCloseoutside = () =>{
+    setAnchorEl(null);
+  }
 
   const classes = useStyles();
 
@@ -48,14 +53,15 @@ const SimpleMenu = ({ tabname }) => {
           anchorEl={anchorEl}
           keepMounted
           open={Boolean(anchorEl)}
-          onClose={handleClose}
+          onClose={handleCloseoutside}
         >
+           <MenuItem onClick={()=> handleClose()}>{tabname}</MenuItem>
           <MenuItem onClick={() => handleClose('orderSummary')}>
             Recent Order Summary View
           </MenuItem>
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          {/* <MenuItem onClick={handleClose}>Profile</MenuItem>
           <MenuItem onClick={handleClose}>My account</MenuItem>
-          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          <MenuItem onClick={handleClose}>Logout</MenuItem> */}
         </Menu>
       ) : (
         <Menu
